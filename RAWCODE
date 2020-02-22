@@ -1,43 +1,28 @@
-fill(0, 0, 0);
-ellipse(200, 200, 375, 375);
-fill(60, 0, 255);
-triangle(200, 104, 280, 280, 120, 280);
-fill(255, 255, 255);
-var answer = floor(random(1, 5));
-if (answer === 4) {
-    fill(255, 0, 230);
-    textSize(20);
-    text("PRAISE", 166, 200);
-    text("GOD", 179, 229); 
+//where rain should start
+var xPositions = [200];
+var yPositions = [0];
+var r = random(0,255);
+var g = random(0,255);
+var b = random(0,255);
+var bodyColor = color(r, g, b);
+//main for loop for rain
+for(var j = 0; j < 140; j++){
+    xPositions.push (random(0,395));
+    yPositions.push (random(0,-400));
+    
 }
-else if (answer >= 3 ) {
-    fill(255, 0, 0);
-    textSize(20);
-    text("PRAISE", 166, 200);
-    text("JESUS", 173, 229);
-}
-else if (answer >= 2 ) {
-    fill(247, 255, 0);
-    textSize(20);
-    text("PRAISE", 165, 200);
-    textSize(15);
-    text("HOLY SPIRIT", 157, 229);
-}
-else if (answer < 2){
-    fill(5, 237, 245);
-    textSize(20);
-    text("PRAISE", 165, 200);
-    textSize(15);
-    text("HOLY TRINITY", 147, 229);
-}
-else 
-        {
-    fill(5, 237, 245);
-    textSize(20);
-    text("PRAISE", 165, 200);
-    textSize(15);
-    text("ALL", 147, 229);
+//draw canvas for rain
+draw = function() {
+    background(3, 209, 245);
+    noStroke();
+//changes direction of rain
+    for (var i = 0; i < xPositions.length; i++) { 
+        fill(random(color(r, g, b)));
+        ellipse(xPositions[i], yPositions[i], 10, 10);
+        yPositions[i] += 7;
+        xPositions[i] += -1;
+        if(yPositions[i] > 400){ yPositions[i] = 0;}
+        if(xPositions[i] < 0){ xPositions[i] = 400;}
     }
-
-
-
+    
+};
